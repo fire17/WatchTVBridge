@@ -1,0 +1,13 @@
+# for launching app
+tell application "Terminal"
+	do script "cd ~/WatchTVBridge; sh start"
+end tell
+
+
+
+# for installing app
+
+tell application "Terminal"
+	do script "git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; python3 -m ensurepip --upgrade ; sh Setup.sh"
+end tell
+
