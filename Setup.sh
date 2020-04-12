@@ -48,7 +48,9 @@ echo "  ############################################"
 echo ""
 rm -rf ~/Desktop/WatchTVBridgeApp.app
 cp -R ~/WatchTVBridge/WatchTVBridgeApp.zip ~/Desktop/WatchTVBridgeApp.zip
-unzip ~/Desktop/WatchTVBridgeApp.zip ;rm -rf ~/Desktop/__MACOSX
+unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
+rm -rf ~/Desktop/__MACOSX
+echo "................................."
 sh check_tv
 echo ""
 echo "CHECK"
