@@ -1,9 +1,9 @@
-echo 'verifying python3.7'
-./install_python3
-echo "CHECK"
-echo ''
+#echo 'verifying python3.7'
+#./install_python3
+#echo "CHECK"
+#echo ''
 
-echo 'edit tv ip address...'
+echo 'editing tv ip address...'
 python3 edit_config.py
 
 echo "checking for tv"

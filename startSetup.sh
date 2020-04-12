@@ -16,7 +16,7 @@ echo "  ##########################################################"
 echo "  ##########################################################"
 echo "  ##########################################################"
 echo ""
-sleep 3
+sleep 1
 echo "Installing python3 requirements..."
 python3 -m pip install pyyaml
 python3 -m pip install pynput
@@ -34,6 +34,17 @@ echo ""
 echo ""
 echo "TV SETUP..."
 sleep 1
+echo "  ############################################"
+echo "  ############################################"
+echo "  #######                                #####"
+echo "  #######   Please Enter TV's IP ADRESS  #####"
+echo "  #######       in the prompt box        #####"
+echo "  #######                                #####"
+echo "  #######           find it in           #####"
+echo "  #######  TV Settigns > Networks Status #####"
+echo "  #######                                #####"
+echo "  ############################################"
+echo "  ############################################"
 sh check_tv
 echo ""
 echo "CHECK"
