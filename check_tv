@@ -1,0 +1,23 @@
+echo 'verifying python3.7'
+./install_python3
+echo "CHECK"
+echo ''
+
+echo 'edit tv ip address...'
+python3 edit_config.py
+
+echo "checking for tv"
+python3 reset8080.py
+make run &
+sleep 1
+curl -X POST http://localhost:8080/key/home
+killall Python
+./start &
+
+echo ''
+echo ' #####################################'
+echo ' #####################################'
+echo ' ###  CHECK yOUR TV - PRESS ALLOW  ###'
+echo ' #####################################'
+echo ' #####################################'
+echo ''

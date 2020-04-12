@@ -1,0 +1,6 @@
+controller:
+  name: RoozRemoteS
+tv:
+  host: 192.168.43.144
+  port: 8002
+  protocol: wss

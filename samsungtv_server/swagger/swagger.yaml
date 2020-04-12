@@ -1,0 +1,70 @@
+openapi: 3.0.1
+info:
+  title: SamsungTV-API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /status:
+    get:
+      description: Checks the configuration and gets the status of the TV
+      operationId: get_status
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: samsungtv_server.controllers.default_controller
+  /key/{key}:
+    post:
+      description: Sends a remote control key to the TV
+      operationId: post_key
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          description: Accepted
+          content: {}
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-openapi-router-controller: samsungtv_server.controllers.default_controller
+components:
+  schemas:
+    StatusResponse:
+      required:
+      - host
+      - reachable
+      type: object
+      properties:
+        host:
+          type: string
+          description: host name or IP address of the TV
+        reachable:
+          type: boolean
+          description: if the TV is reachable
+        tvResponse:
+          type: string
+          description: the status response from the TV
+      example:
+        tvResponse: tvResponse
+        host: host
+        reachable: true
+    ErrorResponse:
+      type: string
+
