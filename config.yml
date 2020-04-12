@@ -1,5 +1,5 @@
 controller:
-  name: RoozRemoteS
+  name: Magicho
 tv:
   host: 192.168.43.144
   port: 8002
