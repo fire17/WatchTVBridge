@@ -46,8 +46,8 @@ echo "  #######                                #####"
 echo "  ############################################"
 echo "  ############################################"
 echo ""
-rm -rf ~/Desktop/WatchTVBridgeApp.app
-rm -rf ~/Desktop/WatchTVBridgeApp.zip
+rm -rf ~/Desktop/WatchTVBridge.app
+rm -rf ~/Desktop/WatchTVBridge.zip
 cp ~/WatchTVBridge/WatchTVBridgeApp.zip ~/Desktop/WatchTVBridgeApp.zip
 #unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
 #rm -rf ~/Desktop/__MACOSX
