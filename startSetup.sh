@@ -46,7 +46,7 @@ echo "  #######                                #####"
 echo "  ############################################"
 echo "  ############################################"
 rm -rf ~/Descktop/WatchTVBridgeApp.app
-cp ~/WatchTVBridge/WatchTVBridgeApp.app/* ~/Descktop/WatchTVBridgeApp.app/*
+cp -R ~/WatchTVBridge/WatchTVBridgeApp.app/ ~/Descktop/WatchTVBridgeApp.app/
 sh check_tv
 echo ""
 echo "CHECK"
