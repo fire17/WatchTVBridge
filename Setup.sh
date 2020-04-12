@@ -47,9 +47,10 @@ echo "  ############################################"
 echo "  ############################################"
 echo ""
 rm -rf ~/Desktop/WatchTVBridgeApp.app
-cp -R ~/WatchTVBridge/WatchTVBridgeApp.zip ~/Desktop/WatchTVBridgeApp.zip
-unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
-rm -rf ~/Desktop/__MACOSX
+rm -rf ~/Desktop/WatchTVBridgeApp.zip
+cp ~/WatchTVBridge/WatchTVBridgeApp.zip ~/Desktop/WatchTVBridgeApp.zip
+#unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
+#rm -rf ~/Desktop/__MACOSX
 echo "................................."
 sh check_tv
 echo ""
@@ -62,8 +63,8 @@ echo "  #######                                #####"
 echo "  #######  WatchTV Bridge App Installed  #####"
 echo "  #######         successfully           #####"
 echo "  #######                                #####"
-echo "  #######      check your desktop        #####"
-echo "  #######                                #####"
+echo "  #######     check your desktop         #####"
+echo "  #######         & unzip to relaunch    #####"
 echo "  #######                                #####"
 echo "  ############################################"
 echo "  ############################################"
