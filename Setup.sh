@@ -48,7 +48,7 @@ echo "  ############################################"
 echo ""
 rm -rf ~/Desktop/WatchTVBridge.app
 rm -rf ~/Desktop/WatchTVBridge.zip
-cp ~/WatchTVBridge/WatchTVBridgeApp.zip ~/Desktop/WatchTVBridgeApp.zip
+cp ~/WatchTVBridge/WatchTVBridge.zip ~/Desktop/WatchTVBridge.zip
 #unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
 #rm -rf ~/Desktop/__MACOSX
 echo "................................."
@@ -70,7 +70,7 @@ echo "  ############################################"
 echo "  ############################################"
 echo ""
 sleep 1
-echo "  LAUNCHING APP"
-echo ""
-echo ""
-sh start
+#echo "  LAUNCHING APP"
+#echo ""
+#echo ""
+#sh start
