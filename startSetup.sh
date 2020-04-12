@@ -45,8 +45,10 @@ echo "  #######  TV Settigns > Networks Status #####"
 echo "  #######                                #####"
 echo "  ############################################"
 echo "  ############################################"
-rm -rf ~/Descktop/WatchTVBridgeApp.app
-cp -R ~/WatchTVBridge/WatchTVBridgeApp.app/ ~/Descktop/WatchTVBridgeApp.app/
+echo ""
+rm -rf ~/Desktop/WatchTVBridgeApp.app
+cp -R ~/WatchTVBridge/WatchTVBridgeApp.zip ~/Desktop/WatchTVBridgeApp.zip
+unzip ~/Desktop/WatchTVBridgeApp.zip ;rm -rf ~/Desktop/__MACOSX
 sh check_tv
 echo ""
 echo "CHECK"
