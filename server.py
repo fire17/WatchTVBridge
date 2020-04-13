@@ -356,8 +356,8 @@ def m(data):
 
 
 
-boxesSizeX = 80
-boxesSizeY = 150
+boxesSizeX = 250
+boxesSizeY = 250
 currBoxX = -1
 currBoxY = -1
 
@@ -542,65 +542,101 @@ def getScreenRes():
 
 resW, resH = getScreenRes()
 
+boxX, boxY = None, None
+boxR = 170
 
 def moveMouse(data):
 	global maxSum, action, actionP, curX, curY, lastAction, lastActionTime, mouse, canMove
 	global currBoxX, currBoxY, boxesSizeX, boxesSizeY, targetmode
 	global xoffset, yoffset, resH, resW, resetNext, withVolume, rt
+	global boxX, boxY, boxR
 	print("starting moveMouse")
 	firstTemp = True
 	tempX, tempY = -1,-1
 	t = time.time()
 	mt = time.time()
+	keydict = {"x-1":"left", "x1":"right","y-1":"down", "y1":"up"}
+	lastPr = [""]
 	while(True):
 		if time.time()-mt > 3:
 			maxSum = 0
 			mt = time.time()
-
+		if action[0] not in ["","m","n","\'"] and action[0] not in lastPr:
+			lastPr[0] = action[0]
+			for aa in range(10):
+				aaa = str(action[0])
+				for ba in range(5):
+					aaa+= aaa
+				print(aaa)
+			print()
 		if action[0] == "m":
 			rt[0] = time.time()
 			lastAction = "move"
 			lastActionTime = time.time()
-			toBoxX = int(curX/boxesSizeX)
-			toBoxY = int(curY/boxesSizeY)
-			# print()
-			# print()
-			# print(toBoxX,toBoxY)
-			# print()
-			if (toBoxX != currBoxX or toBoxY != currBoxX) and canMove[0]:
-				if currBoxX is -1 or currBoxY is -1:
-					currBoxX, currBoxY = toBoxX, toBoxY
-				else:
-					dict = {"x-1":"left", "x1":"right","y-1":"down", "y1":"up"}
-					gox, goy = toBoxX - currBoxX, currBoxY - toBoxY
-					xkey,ykey = "x", "y"
-					if gox <0:
-						xkey += "-"
-					if goy <0:
-						ykey += "-"
-					xkey+="1"
-					ykey+="1"
 
+			if boxX is None or boxY is None:
+				boxX, boxY = curX, curY
 
-					for a in range(abs(gox)):
-						# msg = curl+dict[xkey]
-						send(dict[xkey])
-						# t = Thread(target = oss, args = [msg,])
-						# t.start()
-						# oss(msg)
-						# os.system(curl+dict[xkey])
-					for a in range(abs(goy)):
-						# msg = curl+dict[ykey]
-						send(dict[ykey])
-						# print("############################")
-						# print(msg)
-						# print("############################")
-						# oss(msg)
+			boxDist = math.sqrt(pow(curX-boxX,2)+pow(curY-boxY,2))
+			if boxDist > boxR and canMove[0]:
+				gox, goy = curX-boxX, (curY-boxY)*-1
+				xkey,ykey = "x", "y"
+				if gox <0:
+					xkey += "-"
+				if goy <0:
+					ykey += "-"
+				xkey+="1"
+				ykey+="1"
+				keys = [xkey, ykey]
+				chosenKey = 0
+				if abs(goy)>abs(gox):
+					chosenKey = 1
 
-						# os.system(curl+dict[ykey])
+				for a in range(int(1*boxDist/boxR)):
+					send(keydict[keys[chosenKey]])
 
-					currBoxX = toBoxX
-					currBoxY = toBoxY
+				boxX, boxY = curX, curY
+
+			# toBoxX = int(curX/boxesSizeX)
+			# toBoxY = int(curY/boxesSizeY)
+			# # print()
+			# # print()
+			# # print(toBoxX,toBoxY)
+			# # print()
+			# if (toBoxX != currBoxX or toBoxY != currBoxX) and canMove[0]:
+			# 	if currBoxX is -1 or currBoxY is -1:
+			# 		currBoxX, currBoxY = toBoxX, toBoxY
+			# 	else:
+			# 		dict = {"x-1":"left", "x1":"right","y-1":"down", "y1":"up"}
+			# 		gox, goy = toBoxX - currBoxX, currBoxY - toBoxY
+			# 		xkey,ykey = "x", "y"
+			# 		if gox <0:
+			# 			xkey += "-"
+			# 		if goy <0:
+			# 			ykey += "-"
+			# 		xkey+="1"
+			# 		ykey+="1"
+			#
+			#
+			# 		for a in range(abs(gox)):
+			# 			# msg = curl+dict[xkey]
+			# 			send(dict[xkey])
+			# 			# t = Thread(target = oss, args = [msg,])
+			# 			# t.start()
+			# 			# oss(msg)
+			# 			# os.system(curl+dict[xkey])
+			# 		for a in range(abs(goy)):
+			# 			# msg = curl+dict[ykey]
+			# 			send(dict[ykey])
+			# 			# print("############################")
+			# 			# print(msg)
+			# 			# print("############################")
+			# 			# oss(msg)
+			#
+			# 			# os.system(curl+dict[ykey])
+			#
+			# 		currBoxX = toBoxX
+			# 		currBoxY = toBoxY
 
 			if tempX != curX or tempY != curY:
 				# getTo([curX,curY],[tempX,tempY])

@@ -1,9 +1,16 @@
 ### INSTALL SCRIPT
 # tell application "Terminal" do script "git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh" end tell
-# osascript -e 'tell app "Terminal" do script "git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh end tell'
+# INSTALL
 # MAC : osascript -e 'tell app "Terminal" to do script "git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh"'
 # TER: git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh
+# RUN
+# MAC : osascript -e 'tell application "Terminal" to do script "cd ~/WatchTVBridge; sh start"'
+# TER : cd ~/WatchTVBridge; sh start
 
+# DEPS:
+# sudo apt install curl
+# brew install curl
+# no ensurepip
 
 echo " "
 echo " "
@@ -28,6 +35,7 @@ sleep 1
 echo "Installing python3 requirements..."
 python3 -m ensurepip --upgrade
 python3 -m pip install pyyaml
+#sudo apt install curl
 python3 -m pip install pynput
 python3 -m pip install pyautogui
 python3 -m pip install websocket-client
@@ -36,6 +44,11 @@ echo "CHECK"
 echo ""
 echo ""
 sleep 1
+# echo "Installing brew"
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+# echo ""
+# echo "CHECK"
+# echo ""
 echo "SKIPPING PC SETUP"
 echo ""
 echo "CHECK"
@@ -43,6 +56,9 @@ echo ""
 echo ""
 echo "TV SETUP..."
 sleep 1
+rm -rf ~/Desktop/WatchTVBridge.app
+rm -rf ~/Desktop/WatchTVBridge.zip
+cp ~/WatchTVBridge/WatchTVBridge.zip ~/Desktop/WatchTVBridge.zip
 echo "  ############################################"
 echo "  ############################################"
 echo "  #######                                #####"
@@ -55,12 +71,9 @@ echo "  #######                                #####"
 echo "  ############################################"
 echo "  ############################################"
 echo ""
-rm -rf ~/Desktop/WatchTVBridge.app
-rm -rf ~/Desktop/WatchTVBridge.zip
-cp ~/WatchTVBridge/WatchTVBridge.zip ~/Desktop/WatchTVBridge.zip
 #unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
 #rm -rf ~/Desktop/__MACOSX
-echo "................................."
+# echo "................................."
 sh check_tv
 echo ""
 echo "CHECK"
