@@ -34,11 +34,11 @@ sleep 1
 ### CHECK FOR PYTHON3
 echo "Installing python3 requirements..."
 python3 -m ensurepip --upgrade
-python3 -m pip install pyyaml
+python3 -m pip install pyyaml --user
 #sudo apt install curl
-python3 -m pip install pynput
-python3 -m pip install pyautogui
-python3 -m pip install websocket-client
+python3 -m pip install pynput --user
+python3 -m pip install pyautogui --user
+python3 -m pip install websocket-client --user
 echo ""
 echo "CHECK"
 echo ""
