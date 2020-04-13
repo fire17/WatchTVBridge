@@ -8,6 +8,7 @@
 killall Python
 #python3 server.py
 
+git pull
 
 #./install_python3
 echo " "
