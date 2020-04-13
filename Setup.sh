@@ -1,3 +1,10 @@
+### INSTALL SCRIPT
+# tell application "Terminal" do script "git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh" end tell
+# osascript -e 'tell app "Terminal" do script "git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh end tell'
+# MAC : osascript -e 'tell app "Terminal" to do script "git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh"'
+# TER: git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh
+
+
 echo " "
 echo " "
 echo "  ##########################################################"
@@ -17,7 +24,9 @@ echo "  ##########################################################"
 echo "  ##########################################################"
 echo ""
 sleep 1
+### CHECK FOR PYTHON3
 echo "Installing python3 requirements..."
+python3 -m ensurepip --upgrade
 python3 -m pip install pyyaml
 python3 -m pip install pynput
 python3 -m pip install pyautogui
