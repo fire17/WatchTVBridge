@@ -293,6 +293,11 @@ sock.listen(1)
 
 # pyautogui.moveTo(100, 150)
 curX, curY = pyautogui.position()
+lastPosition = pyautogui.position()
+readySteady = [True]
+steadyxy = [0,0]
+lastData = time.time()+10
+
 action = [""]
 actionP = ["xxx"]
 maxSum = 0
@@ -527,7 +532,8 @@ resetNext = True
 # tttr = Thread(target = stableMouse, args = [None,])
 # tttr.start()
 
-xoffset, yoffset = 0,0
+
+xoffset, yoffset = [0],[0]
 
 def getScreenRes():
 	#get actual screen res
@@ -611,15 +617,27 @@ def moveMouse(data):
 
 				tempX,tempY = curX, curY
 
-				if tempX + xoffset < 0 :
-					xoffset = 0 - tempX
-				if tempY + yoffset < 0 :
-					yoffset = 0 - tempY
+				# if tempX < 0 :
+				# 	xoffset[0] = 0 - tempX
+				# if tempY < 0 :
+				# 	yoffset[0] = 0 - tempY
+				#
+				# if tempX > resW :
+				# 	xoffset[0] = resW - tempX
+				# if tempY > resH :
+				# 	yoffset[0] = resH - tempY
 
-				if tempX + xoffset > resW :
-					xoffset = resW - tempX
-				if tempY + yoffset > resH :
-					yoffset = resH - tempY
+				if tempX + xoffset[0] < 0 :
+					xoffset[0] = 0 - tempX
+				if tempY + yoffset[0] < 0 :
+					yoffset[0] = 0 - tempY
+
+				if tempX + xoffset[0] > resW :
+					xoffset[0] = resW - tempX
+				if tempY + yoffset[0] > resH :
+					yoffset[0] = resH - tempY
+
+
 
 
 
@@ -628,9 +646,9 @@ def moveMouse(data):
 
 
 				if targetmode is "pc":
-					pyautogui.moveTo(tempX+xoffset,tempY+yoffset)
+					pyautogui.moveTo(tempX+xoffset[0],tempY+yoffset[0])
 					print("MMMMMMMMMMMMMMMMMMM")
-					print(tempX+xoffset,tempY+yoffset)
+					print(tempX+xoffset[0],tempY+yoffset[0])
 					print("MMMMMMMMMMMMMMMMMMM")
 
 
@@ -832,29 +850,66 @@ def setStarters(data):
 	print("@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
 
+
+stableCount = 0
+stableMaxTime = 0.8
+
+def stableMouse(at):
+	global lastData, lastPosition, readySteady, steadyxy
+	while(True):
+		if time.time()-lastData > 1:
+
+			lastPosition = pyautogui.position()
+			readySteady[0] = True
+			lastData = time.time()
+
+		time.sleep(0.01)
+
+tg = Thread(target = stableMouse, args = [[None,None],])
+tg.start()
+
+
 for data in udp_server():
 	# global starterY, starterX
 		# log.debug("%r" % (data,))
 	print(":::::::INCOMING:::::::")
 	print(data)
 	print("::::::::::::::::::::::")
-	try:
+	try: #if True: #try:
 		msg = str(data).split("b\'")[-1]
 		action[0] = msg.split("AAA")[-1].split("ZZZ")[0]
 		angles = msg.split("ZZZ")[-1].split("FFF")[0].split(":")
-		asum = float(msg.split("___")[-1].split("AAA")[0])
+		asum = float(msg.split("___")[-1].split("AAA")[0].split("\'")[0])
 		print("aaaa")
 		x, y = msg.split("___")[0].split("@")[-1].split(",")
 		print("bbbbb")
 		x = int(x)
 		y = int(y)
 
-		if starterX[0] is None or starterY[0] is None or time.time()-rt[0]>1.2:
-			rt[0] = time.time()
-			rtt = Thread(target = setStarters, args = [[x,y],])
-			rtt.start()
+		# if starterX[0] is None or starterY[0] is None or time.time()-rt[0]>0.8:
+		# 	rt[0] = time.time()
+		# 	rtt = Thread(target = setStarters, args = [[x,y],])
+		# 	rtt.start()
+		if action[0] is "m":
+			lastData = time.time()
 
-		curX, curY = x+starterX[0],y+starterY[0]
+		if readySteady[0]:
+			print(lastPosition)
+			steadyxy = [(lastPosition.x - x)-xoffset[0], (lastPosition.y - y)-yoffset[0]]
+			# steadyxy = [lastPosition.x - x, lastPosition.y - y]
+
+			# xoffset[0], yoffset[0] = 0, 0
+			stableCount += 1
+			if stableCount is 1:
+				stableTime = time.time()
+
+			if stableCount > 1:
+			# if time.time()-stableTime > stableMaxTime
+				readySteady[0] = False
+		else:
+			stableCount = 0
+
+		curX, curY = x+steadyxy[0],y+steadyxy[1]
 		if asum> maxSum:
 			maxSum = asum
 			# print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -868,75 +923,3 @@ for data in udp_server():
 		print("ACTION: ",action)
 	except Exception as e:
 		print("---------------",e)
-
-e = False
-while False:
-	# global maxSum, action, actionP, curX, curY
-	print ('waiting for a connection')
-	connection, client_address = sock.accept()
-	con[0] = connection
-	try:
-		print ('client connected:', client_address)
-		while True:
-			data = connection.recv(64)
-			# print ('moving mouse %s\n' % data)
-			try:
-				msg = str(data).split("b\'")[-1]
-				action[0] = msg.split("AAA")[-1].split("ZZZ")[0]
-				angles = msg.split("ZZZ")[-1].split("FFF")[0].split(":")
-				asum = float(msg.split("___")[-1].split("AAA")[0])
-				x, y = msg.split("___")[0].split("@")[-1].split(",")
-				x = int(x)
-				y = int(y)
-
-				curX, curY = x,y
-				if asum> maxSum:
-					maxSum = asum
-					# print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					# print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					# print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-
-				print("GOT DATA:")
-				print("(X,Y):  ",x,",",y)
-				print("ACCEL:  ",asum)
-				print("MAXSUM: ",maxSum)
-				print("ACTION: ",action)
-
-				# ss = 0
-				# for ang in angles:
-				#     print("angle ",ang)
-				#     a = 0
-				#     try:
-				#         a = float(ang)*float(ang)
-				#     except:
-				#         pass
-				#     ss +=a
-				#
-				# ss = math.sqrt(ss)
-				#
-				# print(ss)
-				# print()
-
-
-			except:
-				pass
-			if data:
-				# connection.sendall(data)
-				pass
-			else:
-				# break
-				pass
-	except:# Exception ex:
-		print("AAAAAAAAA")
-		e = True
-	finally:
-		print("BBBBBBBBB")
-		if e:
-
-			e = False
-			print("YYY")
-			connection.close()
-
-		else:
-			print("XXX")
-			connection.close()
