@@ -39,6 +39,7 @@ python3 -m pip install pyyaml --user
 python3 -m pip install pynput --user
 python3 -m pip install pyautogui --user
 python3 -m pip install websocket-client --user
+python3 -m pip install pymsgbox --user
 echo ""
 echo "CHECK"
 echo ""

@@ -42,6 +42,13 @@ except ImportError:
 	import pyautogui
 
 
+try:
+	import pymsgbox
+except ImportError:
+	install('pymsgbox')
+	import pymsgbox
+
+
 
 try:
 	import yaml
@@ -86,7 +93,7 @@ except:
 	tv_port = 8002
 # protocol = "wss"
 
-a = pyautogui.prompt(text='Please update your ip! check your tv settings', title='TV IP ADDRESS CONFIG' , default=tv_ip)
+a = pymsgbox.prompt(text='Please update your ip! check your tv settings', title='TV IP ADDRESS CONFIG' , default=tv_ip)
 # print("!!!!!",a)
 p = 8002
 tv_ip = a
