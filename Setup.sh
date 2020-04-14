@@ -92,7 +92,7 @@ echo "  ############################################"
 echo "  ############################################"
 echo ""
 sleep 1
-#echo "  LAUNCHING APP"
-#echo ""
-#echo ""
-#sh start
+echo "  LAUNCHING APP"
+echo ""
+echo ""
+sh start
