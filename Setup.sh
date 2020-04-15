@@ -40,7 +40,8 @@ python3 -m pip install pyautogui --user ; echo '4/7 CHECK' ; echo ''
 python3 -m pip install websocket-client --user ; echo '5/7 CHECK' ; echo ''
 python3 -m pip install pymsgbox --user ; echo '6/7 CHECK' ; echo ''
 ### curl for linux
-sudo apt install curl  ; echo '7/7 CHECK' ; echo ''
+#sudo apt install curl  ;
+echo '7/7 CHECK' ; echo ''
 # echo "Installing brew"
 # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 echo ""
@@ -58,8 +59,8 @@ sleep 1
 rm -rf ~/Desktop/WatchTVBridge.app
 rm -rf ~/Desktop/WatchTVBridge.zip
 cp ~/WatchTVBridge/WatchTVBridge.zip ~/Desktop/WatchTVBridge.zip
-unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
-rm -rf ~/Desktop/__MACOSX
+unzip ~/Desktop/WatchTVBridge.zip -x __MACOSX;
+# rm -rf ~/Desktop/__MACOSX
 echo ''
 echo ''
 echo "  ############################################"
