@@ -1,19 +1,36 @@
-#echo 'verifying python3.7'
-#./install_python3
-#echo "CHECK"
-#echo ''
-
-echo 'editing tv ip address...'
+echo ''
+echo ' editing tv ip address...'
+echo ''
+echo ' #####################################'
+echo ' #####################################'
+echo ' ###         Enter TV's IP         ###'
+echo ' #####################################'
+echo ' #####################################'
+echo ''
+echo ''
 python3 edit_config.py
-
-echo "checking for tv"
+echo ''
+echo ' CHECK'
+echo ''
+echo ' closing previous servers on 8080...'
 python3 reset8080.py
+echo ''
+echo ' CHECK'
+echo ''
+echo ''
+echo " checking for tv"
+echo ''
+echo ' #####################################'
+echo ' #####################################'
+echo ' ###     Trying to pair with TV    ###'
+echo ' #####################################'
+echo ' #####################################'
+echo ''
 make run &
 sleep 1
 curl -X POST http://localhost:8080/key/home
 killall Python
 #./start &
-
 echo ''
 echo ' #####################################'
 echo ' #####################################'

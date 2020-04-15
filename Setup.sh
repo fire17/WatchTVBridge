@@ -1,18 +1,16 @@
-### INSTALL SCRIPT
+##############################################################################
+### osascript install
 # tell application "Terminal" do script "xcode-select --install; git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh" end tell
-# INSTALL
+
+### INSTALL SCRIPT
 # MAC : osascript -e 'tell app "Terminal" to do script "xcode-select --install; git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh"'
 # TER: xcode-select --install; git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh
-# RUN
+
+### RUN SCRIPT
 # MAC : osascript -e 'tell application "Terminal" to do script "cd ~/WatchTVBridge; sh start"'
 # TER : cd ~/WatchTVBridge; sh start
 
-# DEPS:
-# sudo apt install curl
-# brew install curl
-# no ensurepip
-
-# xcode-select --install
+##############################################################################
 
 echo " "
 echo " "
@@ -35,23 +33,21 @@ echo ""
 sleep 1
 ### CHECK FOR PYTHON3
 echo "Installing python3 requirements..."
-python3 -m ensurepip --upgrade
-python3 -m pip install pyyaml --user
-#sudo apt install curl
-python3 -m pip install pynput --user
-python3 -m pip install pyautogui --user
-python3 -m pip install websocket-client --user
-python3 -m pip install pymsgbox --user
+python3 -m ensurepip --upgrade ; echo '1/7 CHECK' ; echo ''
+python3 -m pip install pyyaml --user ; echo '2/7 CHECK' ; echo ''
+python3 -m pip install pynput --user ; echo '3/7 CHECK' ; echo ''
+python3 -m pip install pyautogui --user ; echo '4/7 CHECK' ; echo ''
+python3 -m pip install websocket-client --user ; echo '5/7 CHECK' ; echo ''
+python3 -m pip install pymsgbox --user ; echo '6/7 CHECK' ; echo ''
+### curl for linux
+sudo apt install curl  ; echo '7/7 CHECK' ; echo ''
+# echo "Installing brew"
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 echo ""
 echo "CHECK"
 echo ""
 echo ""
 sleep 1
-# echo "Installing brew"
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-# echo ""
-# echo "CHECK"
-# echo ""
 echo "SKIPPING PC SETUP"
 echo ""
 echo "CHECK"
@@ -62,6 +58,10 @@ sleep 1
 rm -rf ~/Desktop/WatchTVBridge.app
 rm -rf ~/Desktop/WatchTVBridge.zip
 cp ~/WatchTVBridge/WatchTVBridge.zip ~/Desktop/WatchTVBridge.zip
+unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
+rm -rf ~/Desktop/__MACOSX
+echo ''
+echo ''
 echo "  ############################################"
 echo "  ############################################"
 echo "  #######                                #####"
@@ -74,9 +74,6 @@ echo "  #######                                #####"
 echo "  ############################################"
 echo "  ############################################"
 echo ""
-#unzip -o ~/Desktop/WatchTVBridgeApp.zip ;
-#rm -rf ~/Desktop/__MACOSX
-# echo "................................."
 sh check_tv
 echo ""
 echo "CHECK"

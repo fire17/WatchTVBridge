@@ -1,16 +1,12 @@
-#make run &
-#sleep 1
-#curl -X POST http://localhost:8080/key/home
-#sudo easy_install pip
-#sudo easy_install pip3
-#sudo pip install --upgrade pip
-#sudo pip3 install --upgrade pip
+echo ''
+echo 'Terminating previous pythons'
 killall Python
-#python3 server.py
-
+echo 'CHECK'
+echo ''
+echo ' Checking for latest version'
 git pull
-
-#./install_python3
+echo ''
+echo ' CHECK'
 echo " "
 echo " "
 echo "  ##########################################################"
