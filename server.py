@@ -498,11 +498,24 @@ def toggleTarget(data):
 			print()
 			print()
 		try:
-			input()
-			if "tv" in targetmode.lower():
+			tmode = input()
+			if "1" in tmode.lower() or "t" in tmode.lower():
+				targetmode = "tv"
+			elif "2" in tmode.lower() or "p" in tmode.lower() or "m" in tmode.lower():
 				targetmode = "pc"
 			else:
-				targetmode = "tv"
+				print()
+				print(" PLEASE ENTER:")
+				print("   1 or t: TV mode")
+				print("   2 or p: PC mode")
+				print()
+
+
+			### TOGGLE
+			# if "tv" in targetmode.lower():
+			# 	targetmode = "pc"
+			# else:
+			# 	targetmode = "tv"
 		except:
 			failed = True
 			pass
