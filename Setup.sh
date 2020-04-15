@@ -1,8 +1,8 @@
 ### INSTALL SCRIPT
-# tell application "Terminal" do script "git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh" end tell
+# tell application "Terminal" do script "xcode-select --install; git --version ; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh" end tell
 # INSTALL
-# MAC : osascript -e 'tell app "Terminal" to do script "git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh"'
-# TER: git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh
+# MAC : osascript -e 'tell app "Terminal" to do script "xcode-select --install; git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh"'
+# TER: xcode-select --install; git --version; git clone https://github.com/fire17/WatchTVBridge ~/WatchTVBridge; cd ~/WatchTVBridge ; git pull ; sh Setup.sh
 # RUN
 # MAC : osascript -e 'tell application "Terminal" to do script "cd ~/WatchTVBridge; sh start"'
 # TER : cd ~/WatchTVBridge; sh start
@@ -11,6 +11,8 @@
 # sudo apt install curl
 # brew install curl
 # no ensurepip
+
+# xcode-select --install
 
 echo " "
 echo " "
