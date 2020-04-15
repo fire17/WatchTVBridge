@@ -56,10 +56,10 @@ echo ""
 echo ""
 echo "TV SETUP..."
 sleep 1
-rm -rf ~/Desktop/WatchTVBridge.app
+# rm -rf ~/Desktop/WatchTVBridge.app
 rm -rf ~/Desktop/WatchTVBridge.zip
 cp ~/WatchTVBridge/WatchTVBridge.zip ~/Desktop/WatchTVBridge.zip
-unzip ~/Desktop/WatchTVBridge.zip -x __MACOSX;
+# unzip -o ~/Desktop/WatchTVBridge.zip -x __MACOSX;
 # rm -rf ~/Desktop/__MACOSX
 echo ''
 echo ''
