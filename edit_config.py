@@ -111,7 +111,10 @@ print("SAVING CONFIG ", tv_ip, tv_port)
 
 configuration["tv"]["host"] = tv_ip
 configuration["tv"]["port"] = tv_port
-
+if tv_port is 8002:
+	configuration["tv"]["protocol"] = "wss"
+else:
+	configuration["tv"]["protocol"] = "ws"
 # Write YAML file
 with io.open(path, 'w+', encoding='utf8') as outfile:
 	yaml.dump(configuration, outfile, default_flow_style=False, allow_unicode=True)
