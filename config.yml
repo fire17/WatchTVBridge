@@ -2,5 +2,5 @@ controller:
   name: Magicho
 tv:
   host: 192.168.43.144
-  port: 8002
-  protocol: wss
+  port: 8001
+  protocol: ws
