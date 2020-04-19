@@ -1,0 +1,27 @@
+# Samsung Smart TV 2016 remote in Python 3
+
+Samsung Smart TV 2016 remote in Python 3
+
+Requires websockets
+
+```
+$ python3 -m  pip install websockets
+```
+
+Usage from command line:
+
+Switch to channel 107
+```
+$ python sstv2016.py 192.168.10.1 KEY_1 KEY_0 KEY_7 KEY_ENTER
+```
+
+In Python:
+```python
+from sstv2016 import remote
+remote('192.168.1.1', ['KEY_1','KEY_0','KEY_7','KEY_ENTER'])
+```
+
+Keys list:
+
+http://www.maartenvisscher.nl/samsung-tv-control/javadoc/nl/maartenvisscher/samsungtvcontrol/Keycode.html
+
