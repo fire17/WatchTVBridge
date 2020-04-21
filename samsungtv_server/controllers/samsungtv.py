@@ -87,8 +87,8 @@ class SamsungTV():
 	def __init__(self, host, port=8002, name='SamsungTvRemote', read = False):
 		try:
 			self.readback = read
-			if port == 8001:
-				self._URL_FORMAT = self.format_ws
+			# if port == 8001:
+			# 	self._URL_FORMAT = self.format_ws
 			print("!!!!!!!")
 			print(self._URL_FORMAT)
 			print(host,port)
