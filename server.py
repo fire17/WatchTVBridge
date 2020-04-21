@@ -90,7 +90,7 @@ print(tv_ip, tv_port)
 
 # input()
 
-pc_def = True
+pc_def = False
 
 targetmode = "tv"
 # curl = "curl -X POST http://localhost:8080/key/"
@@ -888,6 +888,9 @@ tg = Thread(target = getCloser, args = [[None,None],])
 # tg.start()
 
 if sendHomeOnStart:
+	print("SXSCKSJXNCISCJOSJCOSJCOJSOCJ")
+	print("SXSCKSJXNCISCJOSJCOSJCOJSOCJ")
+	print("SXSCKSJXNCISCJOSJCOSJCOJSOCJ")
 	send("home")
 
 def setStarters(data):
